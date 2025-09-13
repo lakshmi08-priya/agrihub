@@ -16,3 +16,4 @@ dev/config.env
 
 # DB files
 *.sqlite3
+dev/config.env
