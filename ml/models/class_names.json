@@ -1,0 +1,12 @@
+import json
+import tensorflow as tf
+import os
+
+DATA_DIR = "ml/data/processed/train"
+train_ds = tf.keras.utils.image_dataset_from_directory(DATA_DIR, image_size=(224,224), batch_size=32)
+class_names = train_ds.class_names
+
+with open("ml/models/class_names.json", "w") as f:
+    json.dump(class_names, f)
+
+print("Saved class_names.json:", class_names)
