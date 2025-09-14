@@ -1,36 +1,37 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
-from tensorflow.keras.models import load_model
-from PIL import Image
 import numpy as np
+from keras.models import load_model
+from PIL import Image
 import io
+import json
 
 app = FastAPI(title="AgroLens Backend")
 
-# Load your Keras model once when the server starts
-model = load_model("../../ml/models/disease_classifier.keras")
+# Load model (⚠️ this will still fail if you don’t have the keras file)
+# model = load_model("ml/models/disease_classifier.keras")
 
-@app.get("/")
-async def root():
-    return {"status": "ok", "message": "AgroLens backend is running 🚀"}
+# Load class names
+with open("ml/models/class_names.json", "r") as f:
+    CLASS_NAMES = json.load(f)
 
 @app.post("/predict_file")
 async def predict_file(file: UploadFile = File(...)):
-    # Read the image
     contents = await file.read()
-    image = Image.open(io.BytesIO(contents)).convert("RGB")
+    image = Image.open(io.BytesIO(contents)).resize((224, 224))  # adjust size to model
+    img_array = np.array(image) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
 
-    # Preprocess (resize to model input, e.g. 224x224)
-    img_array = image.resize((224, 224))   # adjust if your model expects different size
-    img_array = np.array(img_array) / 255.0
-    img_array = np.expand_dims(img_array, axis=0)  # shape: (1, 224, 224, 3)
+    # ⚠️ Without model, return dummy result
+    # predictions = model.predict(img_array)
+    # predicted_class_index = np.argmax(predictions[0])
+    predicted_class_index = 0  # dummy for now
+    confidence = 0.95
 
-    # Run prediction
-    prediction = model.predict(img_array)
-    predicted_class = int(np.argmax(prediction[0]))
-    confidence = float(np.max(prediction[0]))
+    predicted_class_name = CLASS_NAMES[predicted_class_index]
 
     return JSONResponse({
-        "predicted_class": predicted_class,
-        "confidence": confidence
+        "predicted_class": predicted_class_name,
+        "confidence": float(confidence)
     })
+
