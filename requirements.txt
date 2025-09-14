@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 absl-py==2.3.1
 aiofiles==24.1.0
 annotated-types==0.7.0
@@ -151,3 +152,20 @@ Werkzeug==3.1.3
 wheel==0.45.1
 widgetsnbextension==4.0.14
 wrapt==1.17.3
+=======
+annotated-types==0.7.0
+anyio==4.10.0
+click==8.2.1
+colorama==0.4.6
+fastapi==0.116.1
+h11==0.16.0
+idna==3.10
+pydantic==2.11.8
+pydantic_core==2.33.2
+sniffio==1.3.1
+starlette==0.47.3
+typing-inspection==0.4.1
+typing_extensions==4.15.0
+unicorn==2.1.4
+uvicorn==0.35.0
+>>>>>>> 6a7d7886a6f505497e39e79c8346c937fe01e34a

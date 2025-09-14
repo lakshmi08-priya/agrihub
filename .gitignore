@@ -1,6 +1,41 @@
+# Virtual environments
 .venv/
+venv/
+.env/
+
+# Data & models
 ml/data/
 backend/skillful-air-453214-*.json
-*.log
-__pycache__/
+*.keras
 
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# SQLite database (local development only)
+*.db
+
+# Logs
+*.log
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Jupyter notebooks checkpoints (if any)
+.ipynb_checkpoints/
+
+# pytest cache
+.pytest_cache/
