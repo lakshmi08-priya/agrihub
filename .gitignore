@@ -1,20 +1,6 @@
-$ignore = @"
 .venv/
-__pycache__/
-*.pyc
-.env
-.DS_Store
-"@
-$ignore | Out-File -Encoding utf8 .gitignore
-# Ignore Python virtual environments
-.venv/
-
-# Ignore Python cache
+ml/data/
+backend/skillful-air-453214-*.json
+*.log
 __pycache__/
 
-# Ignore datasets and large raw data
-ml/data/raw/
-ml/data/processed/
-
-# Ignore credentials (VERY important)
-backend/skillful-air-453214-m7-5fcfdbc81141.json
