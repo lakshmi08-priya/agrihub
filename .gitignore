@@ -1,19 +1,35 @@
-# Virtual environment
-venv/
-
 # Python cache
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
+*.pyd
 
-# Env files
-.env
-dev/config.env
+# Virtual environment
+venv/
+.env/
 
 # IDE/editor settings
 .vscode/
 .idea/
 
-# DB files
-*.sqlite3
-dev/config.env
+# SQLite database (local development only)
+*.db
+
+# Logs
+*.log
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Jupyter notebooks checkpoints (if any)
+.ipynb_checkpoints/
+
+# pytest cache
+.pytest_cache/
