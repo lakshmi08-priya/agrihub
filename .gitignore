@@ -1,12 +1,22 @@
+
 # Virtual environments
+
+# Virtual environment
+2b0bb7a (Add model card)
 .venv/
 venv/
 .env/
 
+HEAD
 # Data & models
 ml/data/
 backend/skillful-air-453214-*.json
 *.keras
+
+# Data
+ml/data/
+backend/skillful-air-453214-*.json
+2b0bb7a (Add model card)
 
 # Python cache
 __pycache__/
@@ -17,8 +27,11 @@ __pycache__/
 # IDE/editor settings
 .vscode/
 .idea/
-
+ HEAD
 # SQLite database (local development only)
+
+# SQLite database
+2b0bb7a (Add model card)
 *.db
 
 # Logs
@@ -34,7 +47,11 @@ dist/
 .DS_Store
 Thumbs.db
 
+HEAD
 # Jupyter notebooks checkpoints (if any)
+
+# Jupyter notebooks checkpoints
+2b0bb7a (Add model card)
 .ipynb_checkpoints/
 
 # pytest cache
