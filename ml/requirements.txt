@@ -1,0 +1,14 @@
+﻿torch>=2.0
+torchvision
+pandas
+scikit-learn
+matplotlib
+seaborn
+opencv-python
+tensorboard
+pillow
+tqdm
+onnx
+onnxruntime
+coremltools
+torch-tensorrt
