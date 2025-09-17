@@ -1,12 +1,22 @@
 import os
+import uuid
 from fastapi import UploadFile
 
-TEMP_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "uploads")
-os.makedirs(TEMP_DIR, exist_ok=True)
+UPLOAD_DIR = "backend/uploads"
 
-async def save_upload(file: UploadFile) -> str:
-    path = os.path.join(TEMP_DIR, file.filename)
-    contents = await file.read()
-    with open(path, "wb") as f:
-        f.write(contents)
-    return path
+# Ensure upload folder exists
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+async def save_upload_temp(file: UploadFile) -> str:
+    """
+    Save uploaded file temporarily in backend/uploads and return the file path.
+    """
+    ext = os.path.splitext(file.filename)[1]  # keep original extension
+    unique_name = f"{uuid.uuid4().hex}{ext}"
+    file_path = os.path.join(UPLOAD_DIR, unique_name)
+
+    with open(file_path, "wb") as f:
+        content = await file.read()
+        f.write(content)
+
+    return file_path
