@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Datasets
+ml/data/
+!ml/data/plant_labels.csv
+!ml/data/soil_labels.csv
+
+# Models
+ml/models/
+!ml/models/*.json
+
+# Uploads
+backend/uploads/
+
+# Keys
+*.json
+
+# System
+.DS_Store
+Thumbs.db
