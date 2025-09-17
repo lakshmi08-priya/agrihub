@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgriHub - Smart Alerts</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#56ab2f,#a8e063,#6dd5ed,#2193b0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .alerts-container {
+    width: 1000px;
+    height: 600px;
+    background: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+
+  .alerts-header {
+    background: #2193b0;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .alerts-header h2 { margin: 0; font-size: 1.8em; }
+  .alerts-header p { margin: 5px 0 0 0; font-size: 1em; font-weight: 400; }
+
+  .alerts-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #f4f7f6;
+  }
+
+  .alert-message {
+    background: #fff3cd;
+    border-left: 5px solid #ff9800;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 1em;
+    line-height: 1.3;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeIn 0.5s forwards;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .alerts-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+  }
+
+  .alerts-footer button {
+    padding: 12px 25px;
+    background: #2193b0;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .alerts-footer button:hover { background: #56ab2f; transform: translateY(-3px); }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="alerts-container">
+  <div class="alerts-header">
+    <h2 id="alertsTitle">AgriHub Smart Alerts</h2>
+    <p id="alertsTagline">Stay updated on weather & crop risks</p>
+    <p id="dailyUpdateText">Click below for daily alerts:</p>
+  </div>
+
+  <div class="alerts-body" id="alertsBody">
+    <!-- Alerts will appear here -->
+  </div>
+
+  <div class="alerts-footer">
+    <button onclick="generateAlerts()" id="viewAlertsBtn">View Daily Alerts</button>
+  </div>
+</div>
+
+<script>
+  const lang = localStorage.getItem("selectedLanguage") || "en";
+
+  const headerTranslations = {
+    en: {
+      title: "🌦️ Smart Alerts",
+      tagline: "Stay updated about weather, rainfall & crop risks.",
+      dailyUpdate: "Click below for daily alerts:"
+    },
+    te: {
+      title: "🌦️ స్మార్ట్ అలెర్ట్లు",
+      tagline: "వాతావరణం, వర్షం & పంట హానిపై అప్డేట్స్ పొందండి.",
+      dailyUpdate: "ప్రతిరోజు అలెర్ట్స్ కోసం క్రింద క్లిక్ చేయండి:"
+    },
+    hi: {
+      title: "🌦️ स्मार्ट अलर्ट",
+      tagline: "मौसम, वर्षा और फसल जोखिम की जानकारी रखें।",
+      dailyUpdate: "दैनिक अलर्ट के लिए नीचे क्लिक करें:"
+    }
+  };
+
+  const alertsText = {
+    en: {
+      weather: "🌦️ Weather: Thunderstorms expected today.",
+      rainfall: "🌧️ Rainfall: 45mm expected in your area.",
+      cropRisk: "🌾 Crop Risk: Rice and maize may be affected by heavy rain.",
+      pestAlert: "🐛 Pest Risk: Medium"
+    },
+    te: {
+      weather: "🌦️ వాతావరణం: ఈ రోజు మెరుపులు/గోళ్ల రుద్రలు అవకాశం ఉంది.",
+      rainfall: "🌧️ వర్షపాతం: 45mm వర్షం అవకాశం ఉంది.",
+      cropRisk: "🌾 పంటల ప్రమాదం: ధాన్యం మరియు మక్క జంతువులు ప్రభావితం కావచ్చు.",
+      pestAlert: "🐛 కీటక ప్రమాదం: మధ్యస్థాయి"
+    },
+    hi: {
+      weather: "🌦️ मौसम: आज आकाशीय बिजली के तूफान की संभावना है।",
+      rainfall: "🌧️ वर्षा: आपके क्षेत्र में 45 मिमी बारिश की संभावना।",
+      cropRisk: "🌾 फसल जोखिम: धान और मक्का भारी बारिश से प्रभावित हो सकते हैं।",
+      pestAlert: "🐛 कीट जोखिम: मध्यम"
+    }
+  };
+
+  // Apply header translations
+  document.getElementById("alertsTitle").innerText = headerTranslations[lang].title;
+  document.getElementById("alertsTagline").innerText = headerTranslations[lang].tagline;
+  document.getElementById("dailyUpdateText").innerText = headerTranslations[lang].dailyUpdate;
+  document.getElementById("viewAlertsBtn").innerText = headerTranslations[lang].dailyUpdate;
+
+  const alertsBody = document.getElementById('alertsBody');
+
+  function generateAlerts() {
+    alertsBody.innerHTML = `
+      <div class="alert-message">${alertsText[lang].weather}</div>
+      <div class="alert-message">${alertsText[lang].rainfall}</div>
+      <div class="alert-message">${alertsText[lang].cropRisk}</div>
+      <div class="alert-message">${alertsText[lang].pestAlert}</div>
+    `;
+    alertsBody.scrollTop = alertsBody.scrollHeight;
+  }
+</script>
+
+</body>
+</html>

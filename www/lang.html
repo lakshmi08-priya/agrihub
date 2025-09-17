@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriHub - Language Selection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5ef51, #bdf263, #6dd5ed, #2193b0);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 450px;
+    }
+    select, input {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.1em;
+      border-radius: 10px;
+      border: 2px solid #2193b0;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      background: #ff9800;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #e68900; }
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Language Box -->
+  <div class="box">
+    <h1>🌍 Select Language</h1>
+    <select id="languageSelect">
+      <option value="" disabled selected>-- Select Language --</option>
+      <option value="en">English</option>
+      <option value="hi">हिन्दी (Hindi)</option>
+      <option value="te">తెలుగు (Telugu)</option>
+    </select>
+    <button onclick="showLogin()">Continue</button>
+  </div>
+
+  <!-- Login Popup -->
+  <div class="popup" id="loginPopup">
+    <div class="popup-content">
+      <h2>🔑 Login</h2>
+      <p>Enter your Email or Mobile Number</p>
+      <input type="text" id="loginInput" placeholder="Email / Mobile Number">
+      <button onclick="validateLogin()">Submit</button>
+
+      <!-- OTP Section -->
+      <div id="otpSection" class="hidden">
+        <p>Enter OTP sent to your number/email</p>
+        <input type="text" id="otpInput" placeholder="Enter 6-digit OTP">
+        <button onclick="verifyOTP()">Verify OTP</button>
+        <p id="otpMessage"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alerts Permission Popup -->
+  <div class="popup" id="alertPopup">
+    <div class="popup-content">
+      <h2>🔔 Allow Notifications?</h2>
+      <p>Get instant weather, pest & crop alerts.</p>
+      <button onclick="allowAlerts(true)">✅ Allow</button>
+      <button onclick="allowAlerts(false)">❌ Skip</button>
+    </div>
+  </div>
+
+  <script>
+    let generatedOTP = null;
+
+    function showLogin() {
+      const lang = document.getElementById("languageSelect").value;
+      if (!lang) {
+        alert("⚠️ Please select a language first.");
+        return;
+      }
+      localStorage.setItem("selectedLanguage", lang);
+      document.getElementById("loginPopup").style.display = "flex";
+    }
+
+    function validateLogin() {
+      const input = document.getElementById("loginInput").value.trim();
+      const mobileRegex = /^[0-9]{10}$/;
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+      if (mobileRegex.test(input) || emailRegex.test(input)) {
+        localStorage.setItem("userLogin", input);
+        // Generate fake OTP
+        generatedOTP = Math.floor(100000 + Math.random() * 900000);
+        console.log("Generated OTP:", generatedOTP); // testing only
+        document.getElementById("otpSection").classList.remove("hidden");
+      } else {
+        alert("⚠️ Enter valid 10-digit mobile or Gmail address.");
+      }
+    }
+
+    function verifyOTP() {
+      const otpInput = document.getElementById("otpInput").value.trim();
+      if (otpInput == generatedOTP) {
+        document.getElementById("otpMessage").innerText = "✅ Verified Successfully!";
+        setTimeout(() => {
+          document.getElementById("loginPopup").style.display = "none";
+          document.getElementById("alertPopup").style.display = "flex"; // ask for alerts
+        }, 1000);
+      } else {
+        document.getElementById("otpMessage").innerText = "❌ Invalid OTP, try again.";
+      }
+    }
+
+    function allowAlerts(choice) {
+      localStorage.setItem("alertsAllowed", choice);
+      window.location.href = "features.html";
+    }
+  </script>
+
+</body>
+</html>

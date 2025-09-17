@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriHub - Features</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Attractive buttons for all features */
+    button {
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(45deg, hsl(74, 81%, 68%), #f6d13f);
+      color: rgb(48, 9, 9);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+<section class="features">
+  <h2 id="title">🌾 Our Features</h2>
+  
+  <div class="grid">
+
+    <!-- Soil Monitoring -->
+    <div class="feature-box">
+      <img src="assets/soil.png" alt="Soil Monitoring" class="feature-icon">
+      <h3 id="soilTitle">Soil Monitoring</h3>
+      <p id="soilDesc">Check moisture, pH & nutrients for better yield.</p>
+      <button id="soilBtn">📷 Upload Soil Image</button>
+      <input type="file" id="soilUpload" accept="image/*" style="display:none" onchange="handleSoilFile(event)">
+      <div id="soilResult" style="margin-top:10px;"></div>
+    </div>
+
+    <!-- Plant Disease Detection -->
+    <div class="feature-box">
+      <img src="assets/plant.png" alt="Plant Disease Detection" class="feature-icon">
+      <h3 id="plantTitle">Plant Disease Detection</h3>
+      <p id="plantDesc">AI-powered detection to protect crops early.</p>
+      <button id="plantBtn">📷 Upload Plant Image</button>
+      <input type="file" id="plantUpload" accept="image/*" style="display:none" onchange="handlePlantFile(event)">
+      <div id="plantResult" style="margin-top:10px;"></div>
+    </div>
+
+    <!-- Farmer Queries -->
+    <div class="feature-box">
+      <img src="assets/query.png" alt="Farmer Queries" class="feature-icon">
+      <h3 id="queryTitle">Farmer Queries</h3>
+      <p id="queryDesc">Get instant expert support for your farm.</p>
+      <button onclick="window.location.href='chat.html'" id="queryBtn">Ask a Question</button>
+    </div>
+
+    <!-- Smart Alerts -->
+    <div class="feature-box">
+      <img src="assets/alert.png" alt="Smart Alerts" class="feature-icon">
+      <h3 id="alertTitle">Smart Alerts</h3>
+      <p id="alertDesc">Weather & pest alerts directly on your phone.</p>
+      <button onclick="window.location.href='alerts.html'" id="alertBtn">View Alerts</button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const translations = {
+    en: {
+      title: "🌾 Our Features",
+      soilTitle: "Soil Monitoring",
+      soilDesc: "Check moisture, pH & nutrients for better yield.",
+      soilBtn: "📷 Upload Soil Image",
+      plantTitle: "Plant Disease Detection",
+      plantDesc: "AI-powered detection to protect crops early.",
+      plantBtn: "📷 Upload Plant Image",
+      queryTitle: "Farmer Queries",
+      queryDesc: "Get instant expert support for your farm.",
+      queryBtn: "Ask a Question",
+      alertTitle: "Smart Alerts",
+      alertDesc: "Weather & pest alerts directly on your phone.",
+      alertBtn: "View Alerts"
+    },
+    te: {
+      title: "🌾 మా లక్షణాలు",
+      soilTitle: "మట్టిని పరిశీలించడం",
+      soilDesc: "మంచి పంటకు తేమ, pH & పోషకాలు తనిఖీ చేయండి.",
+      soilBtn: "📷 మట్టి చిత్రం అప్లోడ్ చేయండి",
+      plantTitle: "చెట్టు వ్యాధి గుర్తింపు",
+      plantDesc: "పంటలను రక్షించడానికి AI ఆధారిత గుర్తింపు.",
+      plantBtn: "📷 పంట చిత్రం అప్లోడ్ చేయండి",
+      queryTitle: "రైతు ప్రశ్నలు",
+      queryDesc: "మీ వ్యవసాయానికి తక్షణ నిపుణుల మద్దతు పొందండి.",
+      queryBtn: "ప్రశ్న అడగండి",
+      alertTitle: "స్మార్ట్ అలెర్ట్లు",
+      alertDesc: "వాతావరణం & pests గురించి నేరుగా అప్లోడ్ చేయండి.",
+      alertBtn: "అలెర్ట్లు చూడండి"
+    },
+    hi: {
+      title: "🌾 हमारी सुविधाएँ",
+      soilTitle: "मिट्टी की निगरानी",
+      soilDesc: "बेहतर फसल के लिए नमी, pH और पोषक तत्व जांचें।",
+      soilBtn: "📷 मिट्टी की तस्वीर अपलोड करें",
+      plantTitle: "पौध रोग पहचान",
+      plantDesc: "फसलों की सुरक्षा के लिए AI आधारित पहचान।",
+      plantBtn: "📷 पौधों की तस्वीर अपलोड करें",
+      queryTitle: "किसान प्रश्न",
+      queryDesc: "अपने खेत के लिए तुरंत विशेषज्ञ समर्थन प्राप्त करें।",
+      queryBtn: "प्रश्न पूछें",
+      alertTitle: "स्मार्ट अलर्ट",
+      alertDesc: "मौसम और कीट अलर्ट सीधे आपके फ़ोन पर।.",
+      alertBtn: "अलर्ट देखें"
+    }
+  };
+
+  const lang = localStorage.getItem("selectedLanguage") || "en";
+
+  document.getElementById("title").innerText = translations[lang].title;
+  document.getElementById("soilTitle").innerText = translations[lang].soilTitle;
+  document.getElementById("soilDesc").innerText = translations[lang].soilDesc;
+  document.getElementById("soilBtn").innerText = translations[lang].soilBtn;
+  document.getElementById("plantTitle").innerText = translations[lang].plantTitle;
+  document.getElementById("plantDesc").innerText = translations[lang].plantDesc;
+  document.getElementById("plantBtn").innerText = translations[lang].plantBtn;
+  document.getElementById("queryTitle").innerText = translations[lang].queryTitle;
+  document.getElementById("queryDesc").innerText = translations[lang].queryDesc;
+  document.getElementById("queryBtn").innerText = translations[lang].queryBtn;
+  document.getElementById("alertTitle").innerText = translations[lang].alertTitle;
+  document.getElementById("alertDesc").innerText = translations[lang].alertDesc;
+  document.getElementById("alertBtn").innerText = translations[lang].alertBtn;
+
+  // File handlers
+  function handleSoilFile(event) {
+    const file = event.target.files[0];
+    if(file) document.getElementById("soilResult").innerText = "✅ " + file.name;
+  }
+  function handlePlantFile(event) {
+    const file = event.target.files[0];
+    if(file) document.getElementById("plantResult").innerText = "✅ " + file.name;
+  }
+
+  // Camera support for Soil/Plant upload buttons
+  function openCamera(type) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.capture = 'environment';
+    input.onchange = (event) => {
+      const file = event.target.files[0];
+      if(file) {
+        const resultId = type === 'soil' ? 'soilResult' : 'plantResult';
+        document.getElementById(resultId).innerText = `✅ Captured: ${file.name}`;
+      }
+    };
+    input.click();
+  }
+
+  // Modify existing upload buttons to allow camera too
+  document.getElementById('soilBtn').onclick = () => {
+    const useCamera = confirm("Do you want to use the camera? Click Cancel to choose from gallery.");
+    if(useCamera) openCamera('soil');
+    else document.getElementById('soilUpload').click();
+  };
+
+  document.getElementById('plantBtn').onclick = () => {
+    const useCamera = confirm("Do you want to use the camera? Click Cancel to choose from gallery.");
+    if(useCamera) openCamera('plant');
+    else document.getElementById('plantUpload').click();
+  };
+</script>
+
+</body>
+</html>
+

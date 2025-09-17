@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriHub - Get Started</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Landing Page -->
+<section class="landing">
+  <div class="background-image"></div>
+  <div class="overlay">
+    <h1>AgriHub</h1>
+    <p>Empowering Farmers with Smart Solutions</p>
+    <!-- Only ONE button -->
+    <button onclick="window.location.href='lang.html'">Get Started</button>
+  </div>
+</section>
+
+<!-- App Section -->
+<section class="features">
+  <h2>Farm Tools</h2>
+  <div class="grid">
+
+    <!-- Soil Upload -->
+    <div class="feature-box">
+      <img src="assets/soil.png" alt="Soil">
+      <h3>Soil Analysis</h3>
+      <input type="file" id="soilUpload" style="display:none" onchange="handleSoilFile(event)">
+      <button id="soilBtn">Upload Soil Sample</button>
+      <div id="soilResult"></div>
+    </div>
+
+    <!-- Plant Upload -->
+    <div class="feature-box">
+      <img src="assets/plant.png" alt="Plant">
+      <h3>Plant Disease Detection</h3>
+      <input type="file" id="plantUpload" style="display:none" onchange="handlePlantFile(event)">
+      <button id="plantBtn">Upload Plant Image</button>
+      <div id="plantResult"></div>
+    </div>
+
+    <!-- Chat Bot -->
+    <div class="feature-box">
+      <img src="assets/lang.png" alt="Chat">
+      <h3>AgriBot Chat</h3>
+      <div class="chat-box" id="chatBox">
+        <div id="chatBody" class="chat-messages"></div>
+        <div class="chat-input">
+          <input type="text" id="userInput" placeholder="Type your message...">
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+      <button onclick="document.getElementById('chatBox').style.display='flex'">Open Chat</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- Include App.js -->
+<script src="app.js"></script>
+
+</body>
+</html>
