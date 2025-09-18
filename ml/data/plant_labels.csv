@@ -1,0 +1,2 @@
+﻿filename,crop,disease,pest_risk,severity_bin,timestamp,site_id
+plant1.jpg,rice,leaf_blast,low,mild,2025-09-15T09:00:00Z,siteA
