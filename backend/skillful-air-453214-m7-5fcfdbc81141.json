@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "skillful-air-453214-m7",
+  "private_key_id": "5fcfdbc8114141a4d3716106bac3a89c4e067a67",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCMwdtfXRHXdV8w\nMwwRjap+TfHolD88c7+61sewC/AoI6aX0i8ho6m0xwuFRqbOpJpx+SW4zP3+5cjI\nX9zDMmCkryLxqMQLS9Ib9bA5I85r3RgpgYk9iHTcoHEMvI7pts4PICmMnXu5buJk\nRgX3qbBMKkEHdnNpvkIViH4TiHzO4QtSJ4YPlkUPyQwwV5UANef7u+rkeb36twSa\nQVfAU/79qoRxmNIOdz239zZRzx2zVPDv7mEDT1l8Iwc088GBA0yLgzpAVI7lAcvY\nWuZQtHW3o3xWzjRNtVs1RcA5zg87gIm4vIZk/ld92Gg48CPIgrYOow5hll37oNcq\nFr9DxDKJAgMBAAECggEAA7g3vEfVfCbSBP3o6rweW/6rl//2VGfrNwDn/2xBVtmi\nVGEJGhjmF+OXznzQeaXDnn8ht1hUlWVjHDUCBcA2DnHBy1sL7X2icQ3ZwisVEF82\nWKy67myhJDv8BWBJFxoATNwGk+pDwXP/ZrM93o6WHMrdDxAkHzUYVIozRQAENFGX\nzU9HGAX6mXjK+o0O72vmS6BM85QxjtU3Z9HVmEnwcpcHGOGowrf5GP82zbmKSull\nMBjaUQLoZOBZsnl8sglfN0pzsnKQRPzIfY0kVDRoQY+moUDw40gQE9V2GMgvdqhP\nQCnuCcWgD7kvwngpH6eOnVxAxEZ42aNxeizLcqJakQKBgQC+uzkSMSHw8BLp/f2y\n3BASkw9FeUYUcPgbIPs8nVvb9PYmf71FBlsFp/Vk+RgL26saZgaaZPSCBIA7rgJG\nAXHMjVUuivwE6xxovFiqYKyM1+eKk1dc0/gehuTYRVo1mJRdSaRbERgElftvsl0x\ngGsMqGiO3sfVT71LWEUaT8vCFQKBgQC87LezQnQGfrNXyGGPtuRvKuzMYEi3eKc/\nOVwco4jOK+ZFKr2DIqa7DhTlCVlp6uI5/WM6NhwgwPMEjCctu1yFyVoui4RbKb03\nLdfu//MlocUUtHiob7yyws2rFMhzSPS354S48H0qT0ybk+kZoOo94mTsm2+dtWlT\nXgQVwmVvpQKBgQCgKuMbRs1E4qZPf26b07dfkcViRxw1sER5q7GvTknEpapL3Dua\nCmNHlas6Vv/9fUPrkD/9ScgWoyb4dwELvszMxOcChc5rZvDdd0VSForwX6LeOStF\nFfAn2om0oFDH71CwIlZ17x3nQ/f47aTbHAdJgucDC0xu8l55NjAZj2cBnQKBgBuA\nSe1qSwF3CBxLKwiEkxQrp3TIv00V3yKw8tuoYo3AjjCbXCLutF6eWiRNDBsC+hN+\n8ybSIZ4S+E09Kabak0lWWi5UWNv8Y3LY1YoQ8BAWUF4HN1ktisZq3Q1+ZP+DKzxq\nE0Pong++o2QyT8hPSEnh3tcieUj303EzSlzwg1uRAoGAMRnUftPsUzter6J2hQpk\nij6ztuRmHDO0fGvi120w7NE4PiL2syMknyhdmkFUVxaJdydcGqfLDt5wAwfk572H\noJLsErq17huBh3nPrS+6en8h8qJLLqthfD/UtJLdyNfgq7FB2C28rpsDqLeq3g51\n/uMoMdCEnK31ypuHVM26D2c=\n-----END PRIVATE KEY-----\n",
+  "client_email": "agrolens-ml@skillful-air-453214-m7.iam.gserviceaccount.com",
+  "client_id": "109154175373891964431",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/agrolens-ml%40skillful-air-453214-m7.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,55 +1,25 @@
-<<<<<<< HEAD
-# Virtual environments
-.venv/
-venv/
-.env/
-
-# Data & models
-ml/data/
-backend/skillful-air-453214-*.json
-*.keras
-
-# Python cache
-=======
->>>>>>> integration
+# Python
 __pycache__/
 *.pyc
 *.pyo
-.venv/
+*.pyd
+*.pkl
 
-<<<<<<< HEAD
-# IDE/editor settings
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+
+# ML data
+ml/data/raw/
+ml/models/
+ml/training/
+
+# IDEs
 .vscode/
 .idea/
-
-# SQLite database (local development only)
-*.db
-=======
-# Datasets
-ml/data/
-!ml/data/plant_labels.csv
-!ml/data/soil_labels.csv
-
-# Models
-ml/models/
-!ml/models/*.json
->>>>>>> integration
-
-# Uploads
-backend/uploads/
-
-# Keys
-*.json
-
-# System
-.DS_Store
-Thumbs.db
-<<<<<<< HEAD
-
-# Jupyter notebooks checkpoints
-.ipynb_checkpoints/
-
-# pytest cache
-.pytest_cache/
-=======
->>>>>>> integration
